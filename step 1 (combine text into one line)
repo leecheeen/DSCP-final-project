@@ -1,0 +1,9 @@
+# Your text input
+input_text = """
+"""
+
+# Replace newline characters with a space
+combined_text = input_text.replace('\n', ' ')
+
+# Print the result
+print(combined_text)
