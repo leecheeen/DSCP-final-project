@@ -1,0 +1,34 @@
+# Open the text file with 'latin-1' encoding
+# Open the text file with 'ISO-8859-1' encoding
+file_path = '/content/tayloor.txt'
+with open(file_path, 'r', encoding='cp1252') as file:
+    lines = file.readlines()
+
+# Rest of your code...
+
+
+# Create a dictionary to store lyrics based on the album
+lyrics_by_album = {}
+
+# Iterate over each line in the file
+for line in lines:
+    # Split the line into columns
+    columns = line.split('\t')
+
+    # Check if the line has the expected number of columns
+    if len(columns) >= 4:
+        # Extract album and lyrics
+        album = columns[1].strip()
+        lyrics = columns[3].strip()
+
+        # Check if the album is already in the dictionary
+        if album in lyrics_by_album:
+            # Append the lyrics to the existing album
+            lyrics_by_album[album] += '\n' + lyrics
+        else:
+            # Add a new entry to the dictionary
+            lyrics_by_album[album] = lyrics
+
+# Print or use the lyrics as needed
+for album, lyrics in lyrics_by_album.items():
+    print(f'Album: {album}\nLyrics:\n{lyrics}\n{"="*50}\n')
